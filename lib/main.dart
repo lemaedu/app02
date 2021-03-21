@@ -8,14 +8,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      //Oculta el baner Debug
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Componentes..'),
-          ),
-          body: HomePageTemp()),
-    );
+        title: 'Material App',
+        //Oculta el baner Debug
+        debugShowCheckedModeBanner: false,
+        home: HomePageTemp());
   }
 }
