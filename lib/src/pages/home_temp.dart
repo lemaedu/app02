@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomePageTemp extends StatelessWidget {
-  final opciociones = [
-    'Uno',
-    'Dos',
-    'Tres',
-    'Cuatro',
-    'Cinco',
-    'Seis',
-    'Siete'
-  ];
+  final opciones = ['Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis', 'Siete'];
   //const HomePageTemp({Key key}) : super(key: key);
 
   @override
@@ -19,14 +11,15 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Component Temp'),
       ),
       body: ListView(
-        children: _creatItems(),
+        //children: _creatItems(),
+        children: _createItemCorta(),
       ),
     );
   }
 
   List<Widget> _creatItems() {
     List<Widget> lista = new List<Widget>();
-    for (String opt in opciociones) {
+    for (String opt in opciones) {
       final tempWidgets = ListTile(
         title: Text(opt),
       );
@@ -35,5 +28,22 @@ class HomePageTemp extends StatelessWidget {
     return lista;
   }
 
-  List<Widget> _creatItemCorto() {}
+  List<Widget> _createItemCorta() {
+    //Regresa una nueva Lista
+    return opciones.map((item) {
+      return Column(
+        children: [
+          ListTile(
+            title: Text(item + ','),
+            subtitle: Text("Subtítulo"),
+            //Icono al Inicio del witwest
+            leading: Icon(Icons.access_alarms),
+            trailing: Icon(Icons.keyboard_arrow_right),
+            onTap: () {},
+          ),
+          Divider(),
+        ],
+      );
+    }).toList();
+  }
 }
