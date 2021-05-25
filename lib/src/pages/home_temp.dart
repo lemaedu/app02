@@ -37,7 +37,7 @@ class HomePageTemp extends StatelessWidget {
             title: Text(item + ','),
             subtitle: Text("Subtítulo"),
             //Icono al Inicio del witwest
-            leading: Icon(Icons.access_alarms),
+            leading: Icon(Icons.account_balance_wallet_outlined),
             trailing: Icon(Icons.keyboard_arrow_right),
             onTap: () {},
           ),
