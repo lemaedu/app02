@@ -10,7 +10,7 @@ class AlertPage extends StatelessWidget {
         title: Text('Alert Page'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.beach_access),
+        child: Icon(Icons.west_outlined),
         onPressed: () {
           Navigator.pop(context);
         },
