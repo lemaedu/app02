@@ -5,21 +5,16 @@ import 'package:flutter/services.dart' show rootBundle;
 class _MenuProvider {
   List<dynamic> opciones = [];
   _MenuProvider() {
-    cargaData();
+    //cargarData();
   }
 
-  Future<List<dynamic>> cargaData() async {
-    //rootBundle.loadString('data/menu_opts.json').then((data) {
-    final resp =
-        await rootBundle.loadString('data/menu_opts.json').then((data) {
-      // print(data);
-      Map dataMap = json.decode(data);
-      //print(dataMap);
-      //print(dataMap['nombreApp']);
-      print(dataMap['rutas']);
-      opciones = dataMap['rutas'];
-      return opciones;
-    });
+  Future<List<dynamic>> cargarData() async {
+    final resp = await rootBundle.loadString('data/menu_opts.json');
+
+    Map dataMap = json.decode(resp);
+
+    opciones = dataMap['rutas'];
+    return opciones;
   }
 }
 
