@@ -2,7 +2,6 @@ import 'package:app02/src/utils/icono_string_utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app02/src/providers/menu_provider.dart';
-import 'package:app02/src/pages/alert_page.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({Key key}) : super(key: key);
@@ -41,6 +40,7 @@ class HomePage extends StatelessWidget {
 
   _listaItems(List<dynamic> data, BuildContext context) {
     final List<Widget> opciones = [];
+
     data.forEach((element) {
       final widgetTemp = ListTile(
         title: Text(element['texto']),

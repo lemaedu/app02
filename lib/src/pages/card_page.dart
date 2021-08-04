@@ -13,7 +13,23 @@ class CardPage extends StatelessWidget {
           _cardTipo1(),
           //Añade espacion entre los dos elementos
           SizedBox(height: 30.0),
-          _cardTipo2()
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          //Añade espacion entre los dos elementos
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          //Añade espacion entre los dos elementos
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          //Añade espacion entre los dos elementos
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
         ],
       ),
     );
@@ -22,6 +38,9 @@ class CardPage extends StatelessWidget {
   //Creamos el metodo _cardTipo1()
   Widget _cardTipo1() {
     return Card(
+      //alto en realacion a la sombra
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -48,7 +67,7 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardTipo2() {
-    return Card(
+    final card = Card(
       child: Column(
         children: <Widget>[
           ListTile(
@@ -60,6 +79,7 @@ class CardPage extends StatelessWidget {
           FadeInImage(
             image: NetworkImage(
                 'https://fotoarte.com.uy/wp-content/uploads/2019/03/Landscape-fotoarte.jpg'),
+            //El placeholder debe estar en el dispositivo
             placeholder: AssetImage('assets/jar-loading.gif'),
             fadeInDuration: Duration(milliseconds: 300),
             height: 250.00,
@@ -73,6 +93,23 @@ class CardPage extends StatelessWidget {
             child: Text('Texto de Container de flutter'),
           )
         ],
+      ),
+    );
+    //Container no cambia el ancho ni alto del objeto
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0),
+          //color: Colors.red,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                spreadRadius: 2.0,
+                offset: Offset(2.0, 10.0))
+          ]),
+      //Permire cortar ucalquier cosa que se encuentre fuera del contenedor
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: card,
       ),
     );
   }
