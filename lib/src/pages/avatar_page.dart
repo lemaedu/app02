@@ -31,7 +31,7 @@ class AvatarPage extends StatelessWidget {
           image: NetworkImage(
               "https://avatars.githubusercontent.com/u/16251556?v=4"),
           placeholder: AssetImage('assets/jar-loading.gif'),
-          fadeInDuration: Duration(microseconds: 200),
+          fadeInDuration: Duration(milliseconds: 200),
         ),
       ),
     );
