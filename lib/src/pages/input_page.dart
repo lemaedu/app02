@@ -8,7 +8,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 //Captura el Nombre
-  String _nombre;
+  String _nombre = '';
+  String _email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,10 @@ class _InputPageState extends State<InputPage> {
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         children: <Widget>[
           _crearInput(),
+          Divider(),
+          _crearEmail(),
+          Divider(),
+          _crearPassword(),
           Divider(),
           _crearPersona(),
         ],
@@ -50,7 +55,45 @@ class _InputPageState extends State<InputPage> {
 
   Widget _crearPersona() {
     return ListTile(
-      title: Text('Nombre es: $_nombre'),
+      title: Text('Nombre : $_nombre'),
+      subtitle: Text('Correo : $_email'),
+    );
+  }
+
+  Widget _crearEmail() {
+    return TextField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+          hintText: 'Email',
+          labelText: 'Correo',
+          suffixIcon: Icon(Icons.alternate_email),
+          icon: Icon(Icons.email)),
+      onChanged: (valor) {
+        setState(() {
+          _email = valor;
+          //print(_nombre);
+        });
+      },
+    );
+  }
+
+  Widget _crearPassword() {
+    return TextField(
+      obscureText: true,
+      //keyboardType: TextInputType.visiblePassword,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+          hintText: 'Clave',
+          labelText: 'Clave',
+          suffixIcon: Icon(Icons.lock_open),
+          icon: Icon(Icons.lock)),
+      onChanged: (valor) {
+        setState(() {
+          _email = valor;
+          //print(_nombre);
+        });
+      },
     );
   }
 }
