@@ -10,7 +10,7 @@ class ListaPage extends StatefulWidget {
 class _ListaPageState extends State<ListaPage> {
   //Objeto que permite controllar el Scroll
   ScrollController _scrollController = new ScrollController();
-  List<int> _listaNumero = new List();
+  List<int> _listaNumero = [];
   int _ultimoItem = 0;
   bool _isLoading = false;
 
@@ -50,18 +50,31 @@ class _ListaPageState extends State<ListaPage> {
   }
 
   Widget _crearLista() {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _listaNumero.length,
-      itemBuilder: (BuildContext context, int index) {
-        final imagen = _listaNumero[index];
-        //Se usa FadeInImage para cargar recurso externo
-        return FadeInImage(
-          placeholder: AssetImage("assets/jar-loading.gif"),
-          image: NetworkImage("https://picsum.photos/400/300?image=$index"),
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: obtenerPagina1,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _listaNumero.length,
+        itemBuilder: (BuildContext context, int index) {
+          final imagen = _listaNumero[index];
+          //Se usa FadeInImage para cargar recurso externo
+          return FadeInImage(
+            placeholder: AssetImage("assets/jar-loading.gif"),
+            image: NetworkImage("https://picsum.photos/400/300?image=$index"),
+          );
+        },
+      ),
     );
+  }
+
+  Future obtenerPagina1() async {
+    final duration = new Duration(seconds: 2);
+    new Timer(duration, () {
+      _listaNumero.clear();
+      _ultimoItem++;
+      _agregar10();
+    });
+    return Future.delayed(duration);
   }
 
   _agregar10() {

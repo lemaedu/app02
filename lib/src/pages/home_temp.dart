@@ -23,7 +23,9 @@ class HomePageTemp extends StatelessWidget {
       final tempWidgets = ListTile(
         title: Text(opt),
       );
-      lista..add(tempWidgets)..add(Divider());
+      lista
+        ..add(tempWidgets)
+        ..add(Divider());
     }
     return lista;
   }
