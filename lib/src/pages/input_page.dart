@@ -11,6 +11,16 @@ class _InputPageState extends State<InputPage> {
   String _nombre = '';
   String _email = '';
   String _fecha = '';
+
+  String _opcionSeleccionada = 'Chimborazo';
+
+  List<String> _provincias = [
+    'Chimborazo',
+    'Cotopaxi',
+    'Tunguragua',
+    'Bolivar'
+  ];
+
   TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
@@ -29,6 +39,8 @@ class _InputPageState extends State<InputPage> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),
+          Divider(),
+          _crearDropDown(), //Combobox, Select
           Divider(),
           _crearPersona(),
         ],
@@ -57,10 +69,44 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
+  List<DropdownMenuItem<String>> getOpcionesDropDown() {
+    List<DropdownMenuItem<String>> lista = new List();
+    _provincias.forEach((provincia) {
+      lista.add(DropdownMenuItem(
+        child: Text(provincia),
+        value: provincia,
+      ));
+    });
+    return lista;
+  }
+
+  Widget _crearDropDown() {
+    return Row(
+      children: <Widget>[
+        Icon(Icons.select_all),
+        SizedBox(
+          width: 30.0,
+        ),
+        Expanded(
+          child: DropdownButton(
+            value: _opcionSeleccionada,
+            items: getOpcionesDropDown(),
+            onChanged: (op) {
+              setState(() {
+                _opcionSeleccionada = op;
+              });
+            },
+          ),
+        )
+      ],
+    );
+  }
+
   Widget _crearPersona() {
     return ListTile(
       title: Text('Nombre : $_nombre'),
       subtitle: Text('Correo : $_email'),
+      trailing: Text(_opcionSeleccionada),
     );
   }
 
