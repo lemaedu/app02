@@ -60,7 +60,7 @@ class _ListaPageState extends State<ListaPage> {
           //Se usa FadeInImage para cargar recurso externo
           return FadeInImage(
             placeholder: AssetImage("assets/jar-loading.gif"),
-            image: NetworkImage("https://picsum.photos/400/300?image=$index"),
+            image: NetworkImage('https://picsum.photos/400/300?image=$imagen'),
           );
         },
       ),
